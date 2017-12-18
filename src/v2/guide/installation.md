@@ -6,67 +6,66 @@ vue_version: 2.5.11
 gz_size: "30.59"
 ---
 
-### Compatibility Note
+### Kompatiblitätshinweis
 
-Vue does **not** support IE8 and below, because it uses ECMAScript 5 features that are un-shimmable in IE8. However it supports all [ECMAScript 5 compliant browsers](http://caniuse.com/#feat=es5).
+Vue unterstützt **keinen** Internet Explorer 8 (und ältere Versionen), da es von diesem nicht unterstützte ECMAScript 5 Features benutzt. VueJS unterstützt allerdings alle [ECMAScript 5 kompatiblen Browser](http://caniuse.com/#feat=es5).
 
 ### Release Notes
 
-Latest stable version: {{vue_version}}
+Letzte stabile Version: {{vue_version}}
 
-Detailed release notes for each version are available on [GitHub](https://github.com/vuejs/vue/releases).
+Detaillierte Release Notes für jede Version sind auf [GitHub](https://github.com/vuejs/vue/releases) zu finden.
 
 ## Vue Devtools
 
-When using Vue, we recommend also installing the [Vue Devtools](https://github.com/vuejs/vue-devtools#vue-devtools) in your browser, allowing you to inspect and debug your Vue applications in a more user-friendly interface.
+Zum arbeiten mit Vue empfehlen wir die Installation der [Vue Devtools](https://github.com/vuejs/vue-devtools#vue-devtools) für deinen Browser. Diese erlauben dir ein einfacheres Inspizieren und Debuggen deiner Applikationen.
 
-## Direct `<script>` Include
+## Implementation mittels `<script>` Tag
+Lade dir einfach Vue herunter und binde es mit einem `<script>` Tag ein. `Vue` wird automatisch als globale Variable eingetragen.
 
-Simply download and include with a script tag. `Vue` will be registered as a global variable.
-
-<p class="tip">Don't use the minified version during development. You will miss out on all the nice warnings for common mistakes!</p>
+<p class="tip">Nutze zum Entwickeln nicht die komprimierte Version, sie zeigt dir keine Hinweise an.</p>
 
 <div id="downloads">
-<a class="button" href="/js/vue.js" download>Development Version</a><span class="light info">With full warnings and debug mode</span>
+<a class="button" href="/js/vue.js" download>Development Version</a><span class="light info">Mit allen Hinweisen und Debug Modus</span>
 
-<a class="button" href="/js/vue.min.js" download>Production Version</a><span class="light info">Warnings stripped, {{gz_size}}KB min+gzip</span>
+<a class="button" href="/js/vue.min.js" download>Production Version</a><span class="light info">Hinweise entfernt, {{gz_size}}KB min+gzip</span>
 </div>
 
 ### CDN
 
-Recommended: [https://cdn.jsdelivr.net/npm/vue](https://cdn.jsdelivr.net/npm/vue), which will reflect the latest version as soon as it is published to npm. You can also browse the source of the npm package at [https://cdn.jsdelivr.net/npm/vue/](https://cdn.jsdelivr.net/npm/vue/).
+Empfohlen: [https://cdn.jsdelivr.net/npm/vue](https://cdn.jsdelivr.net/npm/vue), liefert immer die aktuellste Version die auf npm zu finden ist. Der Quellcode ist unter [https://cdn.jsdelivr.net/npm/vue/](https://cdn.jsdelivr.net/npm/vue/) einsehbar.
 
-Also available on [unpkg](https://unpkg.com/vue) and [cdnjs](https://cdnjs.cloudflare.com/ajax/libs/vue/{{vue_version}}/vue.js) (cdnjs takes some time to sync so the latest release may not be available yet).
+Auch verfügbar unter [unpkg](https://unpkg.com/vue) und [cdnjs](https://cdnjs.cloudflare.com/ajax/libs/vue/{{vue_version}}/vue.js) (cdnjs braucht manchaml etwas Zeit um zu synchronisieren, daher kann es auch manchmal ältere Versionen enthalten).
 
 ## NPM
 
-NPM is the recommended installation method when building large scale applications with Vue. It pairs nicely with module bundlers such as [Webpack](https://webpack.js.org/) or [Browserify](http://browserify.org/). Vue also provides accompanying tools for authoring [Single File Components](single-file-components.html).
+NPM ist die empfohlene Installationsmethode für größere Vue Projekte. Es lässt sich gut in "module bundlers" wie [Webpack](https://webpack.js.org/) oder [Browserify](http://browserify.org/) integrieren. Vue bietet ebenfalls Tools um [Single File Components](single-file-components.html) zu erstellen.
 
 ``` bash
-# latest stable
+# installiert das aktuellste 'stable' release
 $ npm install vue
 ```
 
 ## CLI
-
-Vue.js provides an [official CLI](https://github.com/vuejs/vue-cli) for quickly scaffolding ambitious Single Page Applications. It provides batteries-included build setups for a modern frontend workflow. It takes only a few minutes to get up and running with hot-reload, lint-on-save, and production-ready builds:
+Vue.js bietet auch ein [offizieles CLI](https://github.com/vuejs/vue-cli) um in wenigen Minuten 'Single Page Applications' mithilfe eines 'batteries included' Setups für einen modernen Workflow aufzusetzen. Danach unterstützt das Projekt schon 'hot realod', 'lint on save' und Builds für Produktivsysteme.
 
 ``` bash
-# install vue-cli
+# installiere vue-cli
 $ npm install --global vue-cli
-# create a new project using the "webpack" template
+# erstelle ein neuese Projekt mit dem "webpack" Template
 $ vue init webpack my-project
-# install dependencies and go!
+# installiere die Abhängigkeiten und starte das Projekt
 $ cd my-project
 $ npm install
 $ npm run dev
 ```
 
-<p class="tip">The CLI assumes prior knowledge of Node.js and the associated build tools. If you are new to Vue or front-end build tools, we strongly suggest going through <a href="./">the guide</a> without any build tools before using the CLI.</p>
+<p class="tip">
+Die Vue.js CLI setzt Grundkenntnisse in node.js und entsprechenden Build Tools vorraus. Wenn du keine Erfahrung mit Vue.js oder Front-End Build Tools hast, empfehlen wir dir <a href="./">unseren Guide</a> ohne Build Tools durchzuarbeiten, bevor du das CLI benutzt.</p>
 
-## Explanation of Different Builds
+## Erklärung der verschiedenen Build Versionen
 
-In the [`dist/` directory of the NPM package](https://cdn.jsdelivr.net/npm/vue/dist/) you will find many different builds of Vue.js. Here's an overview of the difference between them:
+Im [`dist/` Ordner des NPM Pakets](https://cdn.jsdelivr.net/npm/vue/dist/) sind verschiedene Builds von Vue.js zu finden. Hier eine Übersicht der Unterschiede:
 
 | | UMD | CommonJS | ES Module |
 | --- | --- | --- | --- |
@@ -75,41 +74,41 @@ In the [`dist/` directory of the NPM package](https://cdn.jsdelivr.net/npm/vue/d
 | **Full (production)** | vue.min.js | - | - |
 | **Runtime-only (production)** | vue.runtime.min.js | - | - |
 
-### Terms
+### Begriffserklärung
 
-- **Full**: builds that contains both the compiler and the runtime.
+- **Full**: Builds welche sowohl Compiler als auch Runtime enthalten
 
-- **Compiler**: code that is responsible for compiling template strings into JavaScript render functions.
+- **Compiler**: Code, welcher Vue.js Templates in Javascript render Funktionen umwandelt
 
-- **Runtime**: code that is responsible for creating Vue instances, rendering and patching virtual DOM, etc. Basically everything minus the compiler.
+- **Runtime**: Code, welcher Vue Instanzen erstellt, den DOM-Tree rendert und Objekte einhängt. Im Prinzip alles ohne den Compiler.
 
-- **[UMD](https://github.com/umdjs/umd)**: UMD builds can be used directly in the browser via a `<script>` tag. The default file from jsDelivr CDN at [https://cdn.jsdelivr.net/npm/vue](https://cdn.jsdelivr.net/npm/vue) is the Runtime + Compiler UMD build (`vue.js`).
+- **[UMD](https://github.com/umdjs/umd)**: UMD Builds können direkt per `<script>` Tag eingebaut werden. Der Standardbuild auf jsDelivr [https://cdn.jsdelivr.net/npm/vue](https://cdn.jsdelivr.net/npm/vue) enthält sowohl Runtime als auch Compiler.
 
-- **[CommonJS](http://wiki.commonjs.org/wiki/Modules/1.1)**: CommonJS builds are intended for use with older bundlers like [browserify](http://browserify.org/) or [webpack 1](https://webpack.github.io). The default file for these bundlers (`pkg.main`) is the Runtime only CommonJS build (`vue.runtime.common.js`).
+- **[CommonJS](http://wiki.commonjs.org/wiki/Modules/1.1)**: CommonJS Builds sind dafür da, um mit älteren Bundlern wie [browserify](http://browserify.org/) oder [webpack 1](https://webpack.github.io) genutzt zu werden. Die Standarddatei für solche Bundler (`pkg.main`) enthält nur die Runtime.
 
-- **[ES Module](http://exploringjs.com/es6/ch_modules.html)**: ES module builds are intended for use with modern bundlers like [webpack 2](https://webpack.js.org) or [rollup](https://rollupjs.org/). The default file for these bundlers (`pkg.module`) is the Runtime only ES Module build (`vue.runtime.esm.js`).
+- **[ES Module](http://exploringjs.com/es6/ch_modules.html)**: ES module Builds sind dafür da, um mit modernen Bundlern wie [webpack 2](https://webpack.js.org) oder [rollup](https://rollupjs.org/) genutzt zu werden. Die Standarddatei für solche Bundler (`pkg.module`) enthält nur die Runtime.
+
 
 ### Runtime + Compiler vs. Runtime-only
 
-If you need to compile templates on the client (e.g. passing a string to the `template` option, or mounting to an element using its in-DOM HTML as the template), you will need the compiler and thus the full build:
+Wenn Templates compiliert werden müssen (also Strings an die template Funktion übergeben oder Elemente in andere durch Vue definierte eingehängt werden müssen) muss der Compiler und damit der Full Build genutzt werden:
 
 ``` js
-// this requires the compiler
+// hier wird der Compiler gebraucht
 new Vue({
   template: '<div>{{ hi }}</div>'
 })
 
-// this does not
+// hier wird er nicht gebraucht
 new Vue({
   render (h) {
     return h('div', this.hi)
   }
 })
 ```
+Wenn der `vue-loader` or `vueify` genutzt werden, werden Templates in `*.vue` Dateien bereits zur Compilezeit  in Javascript umgewandelt. Daher wird der Compiler im finalen Bundle nicht benötigt und somit kann ein Runtime only Build genutzt werden.
 
-When using `vue-loader` or `vueify`, templates inside `*.vue` files are pre-compiled into JavaScript at build time. You don't really need the compiler in the final bundle, and can therefore use the runtime-only build.
-
-Since the runtime-only builds are roughly 30% lighter-weight than their full-build counterparts, you should use it whenever you can. If you still wish to use the full build instead, you need to configure an alias in your bundler:
+Da der Runtime-only Build auch 30% kleiner als der Full Build ist, sollte er immer bevorzugt genutzt werden. Will man dennoch den Full Build benutzen, so muss man einen Alias im Bundler anlegen:
 
 #### Webpack
 
@@ -118,7 +117,7 @@ module.exports = {
   // ...
   resolve: {
     alias: {
-      'vue$': 'vue/dist/vue.esm.js' // 'vue/dist/vue.common.js' for webpack 1
+      'vue$': 'vue/dist/vue.esm.js' // 'vue/dist/vue.common.js' für webpack 1
     }
   }
 }
@@ -141,7 +140,7 @@ rollup({
 
 #### Browserify
 
-Add to your project's `package.json`:
+Füge folgendes in die `package.json` ein:
 
 ``` js
 {
@@ -152,17 +151,16 @@ Add to your project's `package.json`:
 }
 ```
 
-### Development vs. Production Mode
+### Development vs. Production Version
+Development/pdocution Versionsn sind hard-gedcodete UML Builds: Die unkomprimierten Dateien sind für die Entwicklung und die komprimierten für production Umgebungen.
 
-Development/production modes are hard-coded for the UMD builds: the un-minified files are for development, and the minified files are for production.
+CommonJS und ES Module Builds are intended for bundlers, sind für die Nutzung mit Bundlern gedacht. Daher werden hierfür keine komprimierten Versionen angeboten, man muss dies also selbst tun
 
-CommonJS and ES Module builds are intended for bundlers, therefore we don't provide minified versions for them. You will be responsible for minifying the final bundle yourself.
-
-CommonJS and ES Module builds also preserve raw checks for `process.env.NODE_ENV` to determine the mode they should run in. You should use appropriate bundler configurations to replace these environment variables in order to control which mode Vue will run in. Replacing `process.env.NODE_ENV` with string literals also allows minifiers like UglifyJS to completely drop the development-only code blocks, reducing final file size.
+CommonJS und ES Module Builds lesen auch `process.env.NODE_ENV` um zu entscheiden, in welchem Modus Vue arbeitet. Das asutauschen von `process.env.NODE_ENV` mit String Literalen erlaubt ebenfalls Tools wie UglifyJS "development only" Blöcke zu filtern und so die finale Packetgröße zu verkleinern.
 
 #### Webpack
 
-Use Webpack's [DefinePlugin](https://webpack.js.org/plugins/define-plugin/):
+Nutzung mit Webpack's [DefinePlugin](https://webpack.js.org/plugins/define-plugin/):
 
 ``` js
 var webpack = require('webpack')
@@ -182,7 +180,7 @@ module.exports = {
 
 #### Rollup
 
-Use [rollup-plugin-replace](https://github.com/rollup/rollup-plugin-replace):
+Nutzung mit Rollup's [rollup-plugin-replace](https://github.com/rollup/rollup-plugin-replace):
 
 ``` js
 const replace = require('rollup-plugin-replace')
@@ -199,23 +197,23 @@ rollup({
 
 #### Browserify
 
-Apply a global [envify](https://github.com/hughsk/envify) transform to your bundle.
+Füge eineb globale [envify](https://github.com/hughsk/envify) Transform zu deinem Bundle hinzu.
 
 ``` bash
 NODE_ENV=production browserify -g envify -e main.js | uglifyjs -c -m > build.js
 ```
 
-Also see [Production Deployment Tips](deployment.html).
+Siehe auch [Production Deployment Tips](deployment.html).
 
-### CSP environments
+### CSP Umgebungen
 
-Some environments, such as Google Chrome Apps, enforce Content Security Policy (CSP), which prohibits the use of `new Function()` for evaluating expressions. The full build depends on this feature to compile templates, so is unusable in these environments.
+Manche Umgebungen, wie bspw. Google Chrome Apps, erzwingen eine Content Security Policy (CSP), welche die Nutzung von `new Function()` zur Evaluierung von Ausdrücken verhindert. Da der Full Build of diesem Feature beruht um Templates zu compilieren, ist er in diesen umgebungen nicht nutzbar.
 
-On the other hand, the runtime-only build is fully CSP-compliant. When using the runtime-only build with [Webpack + vue-loader](https://github.com/vuejs-templates/webpack-simple) or [Browserify + vueify](https://github.com/vuejs-templates/browserify-simple), your templates will be precompiled into `render` functions which work perfectly in CSP environments.
+Der Runtime-only Build ist allerdings komplett mit CSPs kompatibel. Wenn Runtime-only Builds zusammen mit [Webpack + vue-loader](https://github.com/vuejs-templates/webpack-simple) oder [Browserify + vueify](https://github.com/vuejs-templates/browserify-simple) genutzt werden, so werden die Templates bereits zur Compilezeit in `render` Funktionen umgewandelt welche in CSP Umgebungen genutzt werden dürfen.
 
 ## Dev Build
 
-**Important**: the built files in GitHub's `/dist` folder are only checked-in during releases. To use Vue from the latest source code on GitHub, you will have to build it yourself!
+**Wichtig**: Die im `/dist` Ordner der GitHub Repository liegenden Builds werden nur zum Release aktualisiert, daher müssen sie selbst kompiliert werden, wenn man die mit dem Source Code äquivalente Version nutzen möchte:
 
 ``` bash
 git clone https://github.com/vuejs/vue.git node_modules/vue
@@ -226,13 +224,13 @@ npm run build
 
 ## Bower
 
-Only UMD builds are available from Bower.
+In Bower sind nur UMD Module vorhanden.
 
 ``` bash
-# latest stable
+# Letzte 'stable' Version
 $ bower install vue
 ```
 
 ## AMD Module Loaders
 
-All UMD builds can be used directly as an AMD module.
+Alle UMD Builds können direkt als AMD Modul verwendet werden.
