@@ -1,18 +1,20 @@
 ---
-title: The Vue Instance
+title: Die Vue Instanz
 type: guide
 order: 3
 ---
 
-## Creating a Vue Instance
+## Erstellen einer neuen Vue Instanz
 
-Every Vue application starts by creating a new **Vue instance** with the `Vue` function:
+Jede Vue Applikation startet mit der Definition einer neuen **Vue Instanz** mithilfe der `Vue` Funktion:
 
 ``` js
 var vm = new Vue({
-  // options
+  // Optionen
 })
 ```
+
+BOOKMARK
 
 Although not strictly associated with the [MVVM pattern](https://en.wikipedia.org/wiki/Model_View_ViewModel), Vue's design was partly inspired by it. As a convention, we often use the variable `vm` (short for ViewModel) to refer to our Vue instance.
 
