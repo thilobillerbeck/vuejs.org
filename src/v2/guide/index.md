@@ -55,17 +55,14 @@ var app = new Vue({
 </script>
 {% endraw %}
 
-Super, du hast gerade deine erste Vue App erstelt! ...
+Super, du hast gerade deine erste Vue App erstelt! Es sieht so aus, als hätten wir ein String Template gerendert, doch unter der Haube macht Vue viel mehr. Daten und DOM sind nun miteinander verbunden und alles ist **reactive**. Wie können wir das herausfinden? Öffne einfach mal die Browserkonsole und setze `app.message` auf einen anderen Wert. Das obige Beispiel sollte sich mit dem Verändern aktualisieren.
 
-We have already created our very first Vue app! This looks pretty similar to rendering a string template, but Vue has done a lot of work under the hood. The data and the DOM are now linked, and everything is now **reactive**. How do we know? Open your browser's JavaScript console (right now, on this page) and set `app.message` to a different value. You should see the rendered example above update accordingly.
-
-In addition to text interpolation, we can also bind element attributes like this:
+Abseits von Textinterpolation können wir auch wie folgt Attribute an ein Element binden:
 
 ``` html
 <div id="app-2">
   <span v-bind:title="message">
-    Hover your mouse over me for a few seconds
-    to see my dynamically bound title!
+    Hover mit der Maus ein paar Sekunden über mich, um einen dynamisch angebundenen Titel zu sehen.
   </span>
 </div>
 ```
@@ -73,37 +70,37 @@ In addition to text interpolation, we can also bind element attributes like this
 var app2 = new Vue({
   el: '#app-2',
   data: {
-    message: 'You loaded this page on ' + new Date().toLocaleString()
+    message: 'Die Seite wurde um ' + new Date().toLocaleString() + ' geladen'
   }
 })
 ```
 {% raw %}
 <div id="app-2" class="demo">
   <span v-bind:title="message">
-    Hover your mouse over me for a few seconds to see my dynamically bound title!
+    Hover mit der Maus ein paar Sekunden über mich, um einen dynamisch angebundenen Titel zu sehen.
   </span>
 </div>
 <script>
 var app2 = new Vue({
   el: '#app-2',
   data: {
-    message: 'You loaded this page on ' + new Date().toLocaleString()
+    message: 'Die Seite wurde um ' + new Date().toLocaleString() + ' geladen'
   }
 })
 </script>
 {% endraw %}
 
-Here we are encountering something new. The `v-bind` attribute you are seeing is called a **directive**. Directives are prefixed with `v-` to indicate that they are special attributes provided by Vue, and as you may have guessed, they apply special reactive behavior to the rendered DOM. Here, it is basically saying "keep this element's `title` attribute up-to-date with the `message` property on the Vue instance."
+Hier machen wir mit einem neuen Element Bekanntschaft. Das hier genutzte `v-bind` Attribut wird auch **directive** genannt. Directives fangen mit `v-` an um zu zeigen, dass sie ein spezielle Vue Attribut sind. Wie du vielleicht schon erraten hast, haben diese Attribute bestimmte datenabhängige Fähigkeiten im gerenderten DOM. Hier macht das Attribut nichts anderes als zu sagen: "Gleiche das `title` Attribut des Elements immer mit dem `message` Wert in der Vue Instanz ab.". 
 
-If you open up your JavaScript console again and enter `app2.message = 'some new message'`, you'll once again see that the bound HTML - in this case the `title` attribute - has been updated.
+Wenn du nun wieder die JavaScript Konsole öffnest und `app2.message = 'irgendeine Nachricht'` eingibst, so aktualisiert sich wieder das `title` Attribut im obigen Beispiel.
 
-## Conditionals and Loops
+## Bedingungen und Schleifen
 
-It's easy to toggle the presence of an element, too:
+Es ist sehr leicht, die Sichtbarkeit eines Elements zu steuern:
 
 ``` html
 <div id="app-3">
-  <span v-if="seen">Now you see me</span>
+  <span v-if="seen">Jetzt siehst du mich</span>
 </div>
 ```
 
@@ -118,7 +115,7 @@ var app3 = new Vue({
 
 {% raw %}
 <div id="app-3" class="demo">
-  <span v-if="seen">Now you see me</span>
+  <span v-if="seen">Jetzt siehst du mich</span>
 </div>
 <script>
 var app3 = new Vue({
@@ -130,11 +127,11 @@ var app3 = new Vue({
 </script>
 {% endraw %}
 
-Go ahead and enter `app3.seen = false` in the console. You should see the message disappear.
+Versuch direkt einmal `app3.seen = false` in die Konsole einzugeben, die Nachricht sollte verschwinden.
 
-This example demonstrates that we can bind data to not only text and attributes, but also the **structure** of the DOM. Moreover, Vue also provides a powerful transition effect system that can automatically apply [transition effects](transitions.html) when elements are inserted/updated/removed by Vue.
+Diese Beispiel zeigt sehr gut, dass wir nicht nur Daten, sondern auch die Struktur, im DOM verändern können. Vue bringt sogar ein sehr mächtiges Übergangseffektsystem mit, welches automatisch [Übergangseffekte](transitions.html) anwendet, wenn Elemente hinzugefügt/aktualisiert/entfernt werden.
 
-There are quite a few other directives, each with its own special functionality. For example, the `v-for` directive can be used for displaying a list of items using the data from an Array:
+Es gibt noch einige andere Directives, jedes mit seiner eigenen Funktionalität. Beispielsweise das `v-for` Directive, welches genutzt werden kann um eine Liste von Elementen anhand eines Arrays auszugeben:
 
 ``` html
 <div id="app-4">
@@ -150,9 +147,9 @@ var app4 = new Vue({
   el: '#app-4',
   data: {
     todos: [
-      { text: 'Learn JavaScript' },
-      { text: 'Learn Vue' },
-      { text: 'Build something awesome' }
+      { text: 'Lerne JavaScript' },
+      { text: 'Lerne Vue' },
+      { text: 'Erschaffe etwas großartiges' }
     ]
   }
 })
@@ -170,32 +167,32 @@ var app4 = new Vue({
   el: '#app-4',
   data: {
     todos: [
-      { text: 'Learn JavaScript' },
-      { text: 'Learn Vue' },
-      { text: 'Build something awesome' }
+      { text: 'Lerne JavaScript' },
+      { text: 'Lerne Vue' },
+      { text: 'Erschaffe etwas großartiges' }
     ]
   }
 })
 </script>
 {% endraw %}
 
-In the console, enter `app4.todos.push({ text: 'New item' })`. You should see a new item appended to the list.
+Gebe nun in die Konsole `app4.todos.push({ text: 'Neues Element' })` ein. In der Liste sollte nun ein neues Element auftauchen.
 
-## Handling User Input
+## Nutzereingaben verarbeiten
 
-To let users interact with your app, we can use the `v-on` directive to attach event listeners that invoke methods on our Vue instances:
+Damit Nutzer mit deiner App interagieren können, kannst du das `v-on' Directive benutzen, um Listeners zu Elementen hinzuzufügen. Diese führen dann Methoden aus, die in der Vue Instanz definiert wurden:
 
 ``` html
 <div id="app-5">
   <p>{{ message }}</p>
-  <button v-on:click="reverseMessage">Reverse Message</button>
+  <button v-on:click="reverseMessage">Nachricht umdrehen</button>
 </div>
 ```
 ``` js
 var app5 = new Vue({
   el: '#app-5',
   data: {
-    message: 'Hello Vue.js!'
+    message: 'Hallo Vue.js!'
   },
   methods: {
     reverseMessage: function () {
@@ -207,13 +204,13 @@ var app5 = new Vue({
 {% raw %}
 <div id="app-5" class="demo">
   <p>{{ message }}</p>
-  <button v-on:click="reverseMessage">Reverse Message</button>
+  <button v-on:click="reverseMessage">Nachricht umdrehen</button>
 </div>
 <script>
 var app5 = new Vue({
   el: '#app-5',
   data: {
-    message: 'Hello Vue.js!'
+    message: 'Hallo Vue.js!'
   },
   methods: {
     reverseMessage: function () {
@@ -224,9 +221,9 @@ var app5 = new Vue({
 </script>
 {% endraw %}
 
-Note that in this method we update the state of our app without touching the DOM - all DOM manipulations are handled by Vue, and the code you write is focused on the underlying logic.
+In diesem Fall updaten wir den State unserer App, ohne das DOM manuell zu verändern. Die gesammte DOM Manipulation wird von Vue übernommen. So kannst du dich mit deinem Code auf die Logik deiner App konzentrieren.
 
-Vue also provides the `v-model` directive that makes two-way binding between form input and app state a breeze:
+Vue bietet dir auch ein `v-model` Directive, welches einfach ein bidirektoinales Binding zwischen Eingabefeld und App State erstellt:
 
 ``` html
 <div id="app-6">
@@ -238,7 +235,7 @@ Vue also provides the `v-model` directive that makes two-way binding between for
 var app6 = new Vue({
   el: '#app-6',
   data: {
-    message: 'Hello Vue!'
+    message: 'Hallo Vue!'
   }
 })
 ```
@@ -251,58 +248,58 @@ var app6 = new Vue({
 var app6 = new Vue({
   el: '#app-6',
   data: {
-    message: 'Hello Vue!'
+    message: 'Hallo Vue!'
   }
 })
 </script>
 {% endraw %}
 
-## Composing with Components
+## Kombinieren von Komponenten
 
-The component system is another important concept in Vue, because it's an abstraction that allows us to build large-scale applications composed of small, self-contained, and often reusable components. If we think about it, almost any type of application interface can be abstracted into a tree of components:
+Das Komponentensystem ist ein weiteres Grundkonzept von Vue, da es uns danke Abstraktion ermöglicht, große Applikationen mit kleinen, eigenständigen und universell nutzbaren Komponenten zu entwickeln. Wenn man genauer drüber nachdenkt, so kann man fast jede Applikation auf einen Bauem aus Komponenten abbilden:
 
 ![Component Tree](/images/components.png)
 
-In Vue, a component is essentially a Vue instance with pre-defined options. Registering a component in Vue is straightforward:
+Eine Komponente in Vue ist im Wesentlichen eine Vue Instanz mit einigen vordefinierten Werten. Das Einfügen einer Komponente in Vue ist einfach:
 
 ``` js
-// Define a new component called todo-item
+// erstelle eine neue Komponente mit dem Namen 'todo-item'
 Vue.component('todo-item', {
-  template: '<li>This is a todo</li>'
+  template: '<li>Das ist eine Aufgabe</li>'
 })
 ```
 
-Now you can compose it in another component's template:
+Nun kann man die Komponente in dem Template einer anderen Komponente verwenden:
 
 ``` html
 <ol>
-  <!-- Create an instance of the todo-item component -->
+  <!-- Erstelle eine Instanz der 'todo-item' Komponente -->
   <todo-item></todo-item>
 </ol>
 ```
 
-But this would render the same text for every todo, which is not super interesting. We should be able to pass data from the parent scope into child components. Let's modify the component definition to make it accept a [prop](components.html#Props):
+Hier würde alerdings immer der gleiche Text für jedes 'todo-item' gerendert werden. Wir sollten in der Lage sein, Daten vom Parent Objekt in den Scope des Child Objekts zu übergeben. Modifizieren wir nun die Komponente so, dass sie eine [prop](components.html#Props) (engl. property => dt. Attribut) akzeptiert:
 
 ``` js
 Vue.component('todo-item', {
-  // The todo-item component now accepts a
-  // "prop", which is like a custom attribute.
-  // This prop is called todo.
+  // Die todo-item Komponente kann nun
+  // eine "prop" akzeptieren. Diese ist äuqivalent
+  // zu eine Attribut. Die "prop" hier heißt todo.
   props: ['todo'],
   template: '<li>{{ todo.text }}</li>'
 })
 ```
 
-Now we can pass the todo into each repeated component using `v-bind`:
+Nun können wir mit `v-bind` Daten an jede einzelne Komponente übergeben:
 
 ``` html
 <div id="app-7">
   <ol>
     <!--
-      Now we provide each todo-item with the todo object
-      it's representing, so that its content can be dynamic.
-      We also need to provide each component with a "key",
-      which will be explained later.
+      Nun können wir jedem todo-item ein todo Objekt geben
+      welches es repräsentieren soll. So bleibt der Inhalt
+      dynamisch. Wir müssen außerdem jeder Komponente einen "Key"
+      übergeben, was später noch erklärt wird.
     -->
     <todo-item
       v-for="item in groceryList"
@@ -322,9 +319,9 @@ var app7 = new Vue({
   el: '#app-7',
   data: {
     groceryList: [
-      { id: 0, text: 'Vegetables' },
-      { id: 1, text: 'Cheese' },
-      { id: 2, text: 'Whatever else humans are supposed to eat' }
+      { id: 0, text: 'Gemuese' },
+      { id: 1, text: 'Kaese' },
+      { id: 2, text: 'Was auch immer Menschen sonst so essen' }
     ]
   }
 })
@@ -344,18 +341,18 @@ var app7 = new Vue({
   el: '#app-7',
   data: {
     groceryList: [
-      { id: 0, text: 'Vegetables' },
-      { id: 1, text: 'Cheese' },
-      { id: 2, text: 'Whatever else humans are supposed to eat' }
+      { id: 0, text: 'Gemuese' },
+      { id: 1, text: 'Kaese' },
+      { id: 2, text: 'Was auch immer Menschen sonst so essen' }
     ]
   }
 })
 </script>
 {% endraw %}
 
-This is a contrived example, but we have managed to separate our app into two smaller units, and the child is reasonably well-decoupled from the parent via the props interface. We can now further improve our `<todo-item>` component with more complex template and logic without affecting the parent app.
+Das hier ist ein sehr gekünsteltes Beispiel, aber wir haben unsere App in zwei Komponenten unterteilen können. Die Child Komponente ist dank des props Interface saube von der Parent Komponente getrennt. Wir haben nun die Möglichkeit, unser `<todo-item>` mit komplexer Templatestruktur oder Logik auszustatten ohne die Parent Komponente zu beeinträchtigen.
 
-In a large application, it is necessary to divide the whole app into components to make development manageable. We will talk a lot more about components [later in the guide](components.html), but here's an (imaginary) example of what an app's template might look like with components:
+In großen Applikationen ist es essentiell alles in Komponenten zu unterteilen um einen störungsfreien Entwicklungsablauf zu gewährleisten. [Später](components.html) gehen wir in sachen Komponenten noch etwas mehr ins Detail gehen. Aber hier ist ein Beispiel, wie ein App-Template mit Komponenten aussehen könnte:
 
 ``` html
 <div id="app">
@@ -367,14 +364,15 @@ In a large application, it is necessary to divide the whole app into components 
 </div>
 ```
 
-### Relation to Custom Elements
+### Verwandtschaft mit Custom Elements
 
-You may have noticed that Vue components are very similar to **Custom Elements**, which are part of the [Web Components Spec](https://www.w3.org/wiki/WebComponents/). That's because Vue's component syntax is loosely modeled after the spec. For example, Vue components implement the [Slot API](https://github.com/w3c/webcomponents/blob/gh-pages/proposals/Slots-Proposal.md) and the `is` special attribute. However, there are a few key differences:
+Wie dir vielleicht aufgefallen ist haben Vue Komponenten eine große Ähnlichkeit mit **Custom Elements**, welche Teil der 
+[Web Components Spec](https://www.w3.org/wiki/WebComponents/) sind. Das resultiert daraus, dass die Syntax von Vue Komponenten lose nach der Spezifikation definiert wurde. Beispielswiese implementieren Vue Komponenten die [Slot API](https://github.com/w3c/webcomponents/blob/gh-pages/proposals/Slots-Proposal.md) und das spezielle `is` Attribut. Trotzdem gibt es einige gravierende Unterschiede:
 
-1. The Web Components Spec is still in draft status, and is not natively implemented in every browser. In comparison, Vue components don't require any polyfills and work consistently in all supported browsers (IE9 and above). When needed, Vue components can also be wrapped inside a native custom element.
+1. Die Web Components Spezifikation ist immernoch in der Entwicklung, und wird daher noch nicht von jedem Browser nativ unterstützt. Vue Komponenten brauchen keine Polyfills um konsistent in allen Browsern (IE9 oder neuer) zu funktionieren. Wenn gewünscht, können Vue Komponenten auch in ein natives Custom Element gepackt werden.
 
-2. Vue components provide important features that are not available in plain custom elements, most notably cross-component data flow, custom event communication and build tool integrations.
+2. Vue Komponenten bieten einige Features welche in Custom Elements nicht implementiert sind. Bekannte Vertreter sind hier "cross-component data flow", "custom event communication" und "build tool integrations".
 
-## Ready for More?
+## Bereit für mehr?
 
-We've briefly introduced the most basic features of Vue.js core - the rest of this guide will cover them and other advanced features with much finer details, so make sure to read through it all!
+Wir haben hier die Basics von Vue.js's Grundbibiliothek erklärt - Der Rest des Guides beschäftig sich mit diesen und weiteren fortgerschirtteneren Features im Detail. Lese dir daher am besten alles durch!
