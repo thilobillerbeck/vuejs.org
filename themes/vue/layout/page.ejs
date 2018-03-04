@@ -19,7 +19,7 @@
     <% } %>
   <% } %>
   <% if (page.title.trim()) { %>
-    <h1><%- page.title %><%- page.type === 'examples' ? ' Example' : '' %></h1>
+    <h1><%- page.title %><%- page.type === 'examples' ? ' Beispiel' : '' %></h1>
   <% } %>
   <%- page.content %>
   <% if (page.type === 'guide') { %>
@@ -34,9 +34,9 @@
   <% } %>
   <div class="footer">
     <%- partial('partials/ad-text') %>
-    Caught a mistake or want to contribute to the documentation?
+    Hast Du einen Fehler gefunden oder möchtest etwas zur Dokumentation beitragen?
     <a href="https://github.com/vuejs/vuejs.org/blob/master/src/<%- page.path.replace(/\.html$/, '.md') %>" target="_blank">
-      Edit this page on Github!
+      Bearbeite diese Seite auf Github!
     </a>
   </div>
 </div>
