@@ -1700,7 +1700,7 @@ type: api
   <div v-html="html"></div>
   ```
 
-- **See also:** [Data Binding Syntax - Interpolations](../guide/syntax.html#Raw-HTML)
+- **See also:** [Data Binding Syntax - Interpolations](../guide/syntax.html#Rohes-HTML)
 
 ### v-show
 
