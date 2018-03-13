@@ -83,7 +83,7 @@ Du musst nicht alle Komponenten global registrieren. Du eine Komponente auch nur
 
 ``` js
 var Child = {
-  template: '<div>A custom component!</div>'
+  template: '<div>Eine benutzerdefinierte Komponente!</div>'
 }
 
 new Vue({
@@ -95,13 +95,13 @@ new Vue({
 })
 ```
 
-The same encapsulation applies for other registerable Vue features, such as directives.
+Die selbe Kapselung gilt auch für andere Vue Features, wie zum Beispiel Directives.
 
-### DOM Template Parsing Caveats
+### DOM Template Parsing - Einschränkungen
 
-When using the DOM as your template (e.g. using the `el` option to mount an element with existing content), you will be subject to some restrictions that are inherent to how HTML works, because Vue can only retrieve the template content **after** the browser has parsed and normalized it. Most notably, some elements such as `<ul>`, `<ol>`, `<table>` and `<select>` have restrictions on what elements can appear inside them, and some elements such as `<option>` can only appear inside certain other elements.
+Wenn du das DOM als Template nutzt (also die `el` Option nutzt, um ein bestehendes Element zu mounten), machst du schnell mit einigen Einschränkungen bekanntschaft, welche der Funktionsweise von HTML innewohnen, da Vue den Inhalt einer Template nur finden kann, **nachdem** der Browser ihn geparsed und normalisiert hat. Vor allem sind es Elemente wie `<ul>`, `<ol>`, `<table>` und `<select>`, welche die Möglichkeiten der enthaltenen Elemente einschränken. Wiederrum gibt es auch Elemente wie `<option>`, welche nur in bestimmten anderen Elementen auftauchen können.
 
-This will lead to issues when using custom components with elements that have such restrictions, for example:
+Das kann zu einigen Problemen im Umgang mit benutzerdefinierten Komponenten führen, welche Elemente enthalten, die solche Einschräknungen haben:
 
 ``` html
 <table>
@@ -109,7 +109,7 @@ This will lead to issues when using custom components with elements that have su
 </table>
 ```
 
-The custom component `<my-row>` will be hoisted out as invalid content, thus causing errors in the eventual rendered output. A workaround is to use the `is` special attribute:
+Die benutzerdefinierte Komponente `<my-row>` sei in diesem Fall nicht valide, was zu Fehlern in der Ausgabe führen kann. Ein Workaround stellt die Nutzung des `is` Attributs dar:
 
 ``` html
 <table>
@@ -117,17 +117,17 @@ The custom component `<my-row>` will be hoisted out as invalid content, thus cau
 </table>
 ```
 
-**It should be noted that these limitations do not apply if you are using string templates from one of the following sources**:
+**Es ist wichtig zu wissen, dass diese Einschräkungen nicht auf Strin-Templates zutreffen, welche folgenden Quellen entstammen:**
 
 - `<script type="text/x-template">`
 - JavaScript inline template strings
-- `.vue` components
+- `.vue` Komponenten
 
-Therefore, prefer using string templates whenever possible.
+Daher ist es ratsam, String-Templates so wenn möglich zu bevorzugen.
 
-### `data` Must Be a Function
+### `data` muss eine Funktion sein
 
-Most of the options that can be passed into the Vue constructor can be used in a component, with one special case: `data` must be a function. In fact, if you try this:
+Die meisten Optionen in Vue können in den Konstruktor einer Komponente übergeben werden, mit einer Ausnahme: `data` muss eine Funktion sein. Genauer gesagt, wenn du das hier ausprobierst:
 
 ``` js
 Vue.component('my-component', {
@@ -138,7 +138,7 @@ Vue.component('my-component', {
 })
 ```
 
-Then Vue will halt and emit warnings in the console, telling you that `data` must be a function for component instances. It's good to understand why the rules exist though, so let's cheat.
+Wird Vue abbrechen und Warnungen auf der Konsole ausgeben, welche dir mitteilen, dass `data` eine Funktion der Komponenteninstanz sein muss. Es ist nützlich zu wissen warum das so sein muss. Dafür müssen wir ein bisschen tricksen:
 
 ``` html
 <div id="example-2">
@@ -153,9 +153,10 @@ var data = { counter: 0 }
 
 Vue.component('simple-counter', {
   template: '<button v-on:click="counter += 1">{{ counter }}</button>',
-  // data is technically a function, so Vue won't
-  // complain, but we return the same object
-  // reference for each component instance
+  // data ist technisch gesehen eine Funktion,
+  // daher wird Vue sich nicht beschweren.
+  // Wir geben jedoch mit jeder Instanz die gleiche
+  // Objektreferenz zurück
   data: function () {
     return data
   }
@@ -186,7 +187,7 @@ new Vue({
 </script>
 {% endraw %}
 
-Since all three component instances share the same `data` object, incrementing one counter increments them all! Ouch. Let's fix this by instead returning a fresh data object:
+Da sich alle drei Komponenteninstanzen das gleiche `data` Objekt teilen, inkrementiert ein Zähler alle drei. Das ist nicht gut! Das Problem lässt sich durch die Rückgabe eines "frischen" `data` Objektes erreichen:
 
 ``` js
 data: function () {
@@ -196,7 +197,7 @@ data: function () {
 }
 ```
 
-Now all our counters each have their own internal state:
+Nun haben unsere Zähler alle einen unabhängigen Zustand:
 
 {% raw %}
 <div id="example-2-5" class="demo">
@@ -219,7 +220,7 @@ new Vue({
 </script>
 {% endraw %}
 
-### Composing Components
+### Komponenten zusammenfügen
 
 Components are meant to be used together, most commonly in parent-child relationships: component A may use component B in its own template. They inevitably need to communicate to one another: the parent may need to pass data down to the child, and the child may need to inform the parent of something that happened in the child. However, it is also very important to keep the parent and the child as decoupled as possible via a clearly-defined interface. This ensures each component's code can be written and reasoned about in relative isolation, thus making them more maintainable and potentially easier to reuse.
 
